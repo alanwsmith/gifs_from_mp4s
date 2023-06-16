@@ -3,6 +3,7 @@
 import subprocess
 import glob
 import os
+from pathlib import Path
 
 source_dir = "/Users/alan/GIFs/mp4s"
 dest_dir = "/Users/alan/GIFs/mp4_output"
@@ -15,11 +16,15 @@ file_list = [
 for start_path in file_list:
     output_path = start_path.replace(source_dir, dest_dir).replace(".mp4", ".gif")
 
+    if Path(output_path).is_file():
+        continue 
+
+
     print(start_path)
     get_crop_command = [
-            "ffmpeg", "-i", start_path, 
-            "-vf", "cropdetect", "-f", "null", "-"
-            ]
+        "ffmpeg", "-i", start_path, 
+        "-vf", "cropdetect", "-f", "null", "-"
+    ]
 
     results_crop = subprocess.run(get_crop_command,
          capture_output=True,
