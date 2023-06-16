@@ -1,2 +1,8 @@
-# gifs_from_mp4s
-Making GIFs from MP4s
+# GIFs from MP4s
+
+A script to convert MP4s into GIFs while
+removing black cropping bars from them.
+
+
+
+
